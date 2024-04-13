@@ -165,22 +165,20 @@ group by  home_ownership
 -- loan status 
 
 select 
-		loan_status,
-		COUNT(id) as Total_application,
-		SUM(loan_amount) as Total_fund_Amount,
-		SUM(total_payment) as Total_recived_amount,
-		AVG(int_rate * 100) as Interest_Rate,
-		AVG(dti * 100) as DTI
-		
+	loan_status,
+	COUNT(id) as Total_application,
+	SUM(loan_amount) as Total_fund_Amount,
+	SUM(total_payment) as Total_recived_amount,
+	AVG(int_rate * 100) as Interest_Rate,
+	AVG(dti * 100) as DTI
 from bank_loan_data
 group by loan_status
 
 
 select 
-		loan_status,
-		SUM(loan_amount) as MTD_Total_fund_Amount,
-		SUM(total_payment) as MTD_Total_recived_amount
-		
+ 	loan_status,
+	SUM(loan_amount) as MTD_Total_fund_Amount,
+	SUM(total_payment) as MTD_Total_recived_amount
 from bank_loan_data
 where MONTH(issue_date) = 12
 group by loan_status
@@ -188,11 +186,11 @@ group by loan_status
 -- Find How much apllication for every month and find total amount funded and received by every month
 
 select 
-		COUNT(id) as Total_Applications,
-		MONTH(issue_date) as Month_no, 
-		DATENAME(month, issue_date) As Month_Name,
-		SUM(loan_amount) as Total_funded_amount,
-		SUM(total_payment) as Received_payment
+	COUNT(id) as Total_Applications,
+	MONTH(issue_date) as Month_no, 
+	DATENAME(month, issue_date) As Month_Name,
+	SUM(loan_amount) as Total_funded_amount,
+	SUM(total_payment) as Received_payment
 from bank_loan_data
 group by MONTH(issue_date), DATENAME(month, issue_date) 
 order by Month_no
@@ -201,10 +199,10 @@ order by Month_no
 
 
 select 
-		address_state as State,
-		COUNT(id) as Total_Applications,
-		SUM(loan_amount) as Total_funded_amount,
-		SUM(total_payment) as Received_payment
+	address_state as State,
+	COUNT(id) as Total_Applications,
+	SUM(loan_amount) as Total_funded_amount,
+	SUM(total_payment) as Received_payment
 from bank_loan_data
 group by address_state 
 order by SUM(loan_amount) desc
@@ -213,20 +211,20 @@ order by SUM(loan_amount) desc
 -- TERM
 
 select 
-		term as Term,
-		COUNT(id) as Total_Applications,
-		SUM(loan_amount) as Total_funded_amount,
-		SUM(total_payment) as Received_payment
+	term as Term,
+	COUNT(id) as Total_Applications,
+	SUM(loan_amount) as Total_funded_amount,
+	SUM(total_payment) as Received_payment
 from bank_loan_data
 group by term
 order by term
 
 
 select 
-		emp_length as Emp_lenth,
-		COUNT(id) as Total_Applications,
-		SUM(loan_amount) as Total_funded_amount,
-		SUM(total_payment) as Received_payment
+	emp_length as Emp_lenth,
+	COUNT(id) as Total_Applications,
+	SUM(loan_amount) as Total_funded_amount,
+	SUM(total_payment) as Received_payment
 from bank_loan_data
 group by emp_length
 order by Total_Applications desc
@@ -235,10 +233,10 @@ order by Total_Applications desc
 -- Purpose 
 
 select 
-		purpose,
-		COUNT(id) as Total_Applications,
-		SUM(loan_amount) as Total_funded_amount,
-		SUM(total_payment) as Received_payment
+	purpose,
+	COUNT(id) as Total_Applications,
+	SUM(loan_amount) as Total_funded_amount,
+	SUM(total_payment) as Received_payment
 from bank_loan_data
 group by purpose
 order by Total_Applications desc
@@ -246,10 +244,13 @@ order by Total_Applications desc
 -- Home Ownership
 
 select 
-		home_ownership,
-		COUNT(id) as Total_Applications,
-		SUM(loan_amount) as Total_funded_amount,
-		SUM(total_payment) as Received_payment
+	home_ownership,
+	COUNT(id) as Total_Applications,
+	SUM(loan_amount) as Total_funded_amount,
+	SUM(total_payment) as Received_payment
 from bank_loan_data
 group by home_ownership
 order by Total_Applications desc
+
+
+
